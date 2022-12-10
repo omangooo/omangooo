@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+#time {
+    font-size: 50px;
+    font-weight: bold;
+    /* background-image: url(http://www.sipac.gov.cn/szgyyq/yqfkfgfc/202204/c24a83da14724c939e5d94ed3c7d4e36/images/5ae9dec6c6d04de9ba1ce5fe28d04878.jpg); */
+    position: absolute;
+    top:  35%;
+    height: 100%;
+    width:  100%;
+    /* z-index:-1; */
+    /* display: inline-block; */
+}
+</style>
+    </head>
+    
+    <body onload="time(),phoneTime()">
+        <div style="position: relative; width: 600px; height: 1180px;">
+             <span id="phoneTime" style="position: absolute; top: 20px; left: 38px; font-size: 22px; font-weight: bold;" ></span>
+             <marquee  direction="left" loop="100"   scrollamount="60"  scrolldelay="1000"      height="100"  style="position: absolute; top: 280px; left: 00px;" >
+	<font  face="黑体"  color="#DF7866"  size="5">若您有近14天中高风险地区旅居史（含境外）请及时信息更新和风险报备。</font>
+</marquee>
+
+<img src="images/hesuan.jpg" width="600" height="1280" alt="">
+        <span id="time" style="position: absolute; top: 360px; left: 100px;"></span>
+
+        
+</div>
+    </body>
+    <script>
+            function time(){
+                var date = new Date();
+                var year = date.getFullYear();
+                var month = date.getMonth()+1;
+                var day = date.getDate();
+            
+                var hour =date.getHours();
+                hour=hour<10?"0"+hour:hour;
+                var minute =date.getMinutes();
+                minute=minute<10?"0"+minute:minute;
+                var second = date.getSeconds();
+                second=second<10?"0"+second:second;
+                var currentTime = month+"-"+day+"  "+"                                                                            "+hour+":"+minute+":"+second;
+                document.getElementById("time").innerHTML=currentTime;
+            }
+            function phoneTime(){
+                var date = new Date();
+                var hour =date.getHours();
+                hour=hour<10?"0"+hour:hour;
+                var minute =date.getMinutes();
+                minute=minute<10?"0"+minute:minute;
+
+                var currentTime =hour+":"+minute;
+                document.getElementById("phoneTime").innerHTML=currentTime;
+            }
+            setInterval("time()",1000);
+             setInterval("phoneTime()",1000);
+        </script>
+</html>
